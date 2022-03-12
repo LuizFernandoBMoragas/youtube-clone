@@ -1,0 +1,305 @@
+ /* Reset CSS */
+ *{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+ 
+ body{
+     background-color: #f9f9f9;
+     color: #222;
+     font-family: 'Roboto', sans-serif;
+ }
+
+ 
+ header{
+    background-color: white;
+    padding: 1rem;
+    border-bottom: 2px solid #f2f2f2;
+
+    /* para deixarmos como desejamos o cabeçalho para MOBILE: */
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    /* deixar todos os itens alinhados verticalmente  */
+    align-items: center;
+}
+
+/* para que os links continuem sempre preto e nao fiquem 
+roxos apos serem clicados: */
+a{
+    text-decoration: none;
+    color: #222;
+}
+
+
+
+/* para alterar o tamanho da image no logo: */
+.logo img{
+    width: 100px;
+}
+
+/* input do typo tal dentro da div de classe tal: */
+.search input[type='search']{
+    width: 400px;
+    padding: 0.5rem;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+}
+
+/* configurando nosso botão de log-in: */
+.button{
+    padding: 0.25rem 1.5rem;
+    border: 1px solid #2c5fd5;
+    border-radius: 2px;
+    color: #2c5fd5;
+    /* para deicar a fonte em negrito:  */
+    font-weight: bold;
+    /* para tirar o sublinhado: */
+    text-decoration: none;
+}
+
+main{
+    /* para que o conteudo fique centralizado: */
+    margin: auto;
+
+    display: grid;
+    /* se quiser que haja espaço entre os elementos da nossa 
+    grid:  */
+    /* grid-gap: 1rem; */
+    /* ou ainda separar linhas e colunas do grid:  */
+    grid-row-gap: 1rem; 
+    /* grid-colum-gap: 1rem; */
+
+    /* para unirmos o nosso 'subscribe' com o 'channel': */
+    grid-template-areas:  
+      'video-player video-player'
+      'video-info   video-info'
+      'actions      actions'
+      'channel      subscribe'
+      /* no mobile nao possui anuncio e como 'mobile first': */
+      /* 'ad           ad' */
+      'up-next      up-next';
+}
+
+/* adicionar uma cor por classe do main para deixar tudo 
+visivelmente separado */
+.video-player{
+    /* informar o nome(que pode ser diferente do nome da classe) 
+    para o grid  */
+    grid-area: video-player;
+    
+    /* adicionar um css especifico para que o video funcione perfeitamente  */
+    position: relative;
+    padding: 1rem 0 56.25% 1rem;
+    height: 0;
+    overflow: hidden;
+    text-align: center;
+}
+/* junto com o css acima para o video funcionar corretamente 
+ha tambem um css para as classes abaixo para ajustar o video 
+do youtube na exata dimensao do nosso css grid:   */
+.video-player iframe,
+.video-player object,
+.video-player embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.video-info{
+    grid-area: video-info;
+
+    padding: 0 0 1rem 1rem;
+    /* somente necessario para desktop: */
+    /* border-bottom: 1px solid #ddd; */
+}
+.video-info h1{
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 1rem;
+}
+.video-info .views{
+    color: #606060;
+}
+
+
+
+.actions{
+    grid-area: actions;
+
+    border-bottom: 1px solid #ddd;
+    padding: 0 1rem 0.5rem 1rem;
+    color: #636363;
+
+    display: grid;
+    /* ao inves de usar com 'auto auto auto auto auto', usa-se */
+    grid-template-columns: repeat(5, auto);
+    justify-content: space-evenly;
+    align-items: end;
+    grid-gap: 1rem;
+}
+.action{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 0.25rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+}
+/* para colocar no ultimo elemento action(last-child) uma unica coluna pois 
+nesse nao ha texto... */
+.action:last-child{
+    grid-template-columns: auto;
+}
+.action svg{
+    width: 24px;
+    height: 24px;
+    /* para utilizar a cor de qualquer elemento acima dele usa-se */
+    fill: currentColor;
+}
+
+
+
+
+.channel{
+    grid-area: channel;
+
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    grid-gap: 1rem;
+}
+.channel img{
+    width: 48px;
+    border-radius: 50%;
+}
+.channel .date{
+    color: #777;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+.channel .channel-description{
+    font-size: 0.8rem;
+}
+
+
+
+.subscribe{
+    grid-area: subscribe;
+
+    padding: 3rem 1rem;
+    border-bottom: 1px solid #ddd;
+    text-align: right;
+}
+.subscribe .button{
+    border: none;
+    background-color: #fb2300;
+    color: white;
+    padding: 10px 16px;
+    /* outra maneira de deixar o texto maiusculo: */
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+
+
+
+
+.ad{
+    /* para mobile nao tem anuncio */
+    /* grid-area: ad; */
+    /* para que o nome da area no grid nao aparecesse 
+    eu poderia usar tambem o 'display:none;' desta maneira */
+    grid-area: ad;
+    /* display: none; */
+
+    margin: 1rem;
+    padding: 4rem;
+    text-align: center;
+    background-color: #2196f3;
+    color: white;
+}
+
+
+
+
+.up-next{
+    grid-area: up-next;
+
+    margin: 1rem;
+}
+.up-next a{
+    display: grid;
+    /* uma forma de dividir o grid é atraves da fração 
+    representado através do 'fr' como no exemplo a baixo 
+    em que a primeira coluna representa 4/9 e a segunda 5/9 
+    do total : */
+    grid-template-columns: 4fr 5fr;
+    grid-gap: 0.5rem;
+    padding-bottom: 0.75rem;
+}
+/* porem para que funcione a divisao das colunas por fração é 
+necessario que especifiquemos a largura da imagem:  */
+.up-next img{
+    width: 100%;
+}
+.up-next h4{
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+.up-next p{
+    color: #888;
+    font-size: 0.9rem;
+}
+
+
+
+/* para esconder algo que eu  nao quero que apareça como 
+é o caso dos anuncios em tela mobile podemos também: */
+/* Em outras palavras: uando a tela for mobile ele nao sera 
+mais visivel. */
+@media screen and (max-width: 700px){
+   .search, .ad{
+        display: none;
+    }
+}
+
+/* ----Abaixo estaremos dizendo para o navegador: o que estiver 
+dentro dos colchetes voce so aplica se as duas condições existirem. */
+@media screen and (min-width: 700px){
+    header{
+        /* para termos nosso cabeçalho dividido em tres colunas */
+        grid-template-columns: auto auto auto;
+    }
+    main{
+         /* para limitar lateralmente a visualização. O que so faz sentido 
+     quando estamos no desktop: */
+     max-width: 1200px;
+
+     grid-template-areas:  
+     'video-player   video-player   ad'
+     'video-player   video-player   up-next'
+     'video-info     actions        up-next'
+     'channel        subscribe      up-next'
+     /* para que a parte a baixo do video nao fique se 
+     mexendo erroneamente conforme a parte do up-next é 
+     alterada, adicionamos na area que queremos estabilizar 
+     uma linha de ponto e onde nao queremos, damos continuidade
+     no que estava sendo adicionado no local... como demonstrado 
+     a baixo: */
+     '.              .              up-next';     
+    }
+
+    .video-info{
+        border-bottom: 1px solid #ddd;
+    }
+}
